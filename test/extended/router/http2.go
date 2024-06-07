@@ -476,10 +476,6 @@ var _ = g.Describe("[sig-network-edge][Conformance][Area:Networking][Feature:Rou
 						e2e.Logf("[test #%d/%d]: config: %s, GET error: %v", i+1, len(testCases), testConfig, err)
 						return false, nil // could be 503 if service not ready
 					}
-					if tc.statusCode == 0 {
-						resp.Body.Close()
-						return false, nil
-					}
 					if resp.StatusCode != tc.statusCode {
 						resp.Body.Close()
 						e2e.Logf("[test #%d/%d]: config: %s, expected status: %v, actual status: %v", i+1, len(testCases), testConfig, tc.statusCode, resp.StatusCode)
